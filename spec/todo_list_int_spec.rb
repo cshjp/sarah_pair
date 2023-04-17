@@ -35,4 +35,17 @@ describe TodoList do
       expect(todolist.complete).to eq [todo1]
     end
   end
+
+  describe "#give_up!" do
+    it "mark all incomplete todos as completed" do
+      todo1 = Todo.new("get milk")
+      todo2 = Todo.new("cook dinner")
+      todolist = TodoList.new()
+      todolist.add(todo1)
+      todolist.add(todo2)
+      todolist.give_up!
+      result = todolist.complete
+      expect(result).to eq [todo1, todo2]
+    end
+  end
 end
